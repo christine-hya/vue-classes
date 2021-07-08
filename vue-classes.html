@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .user1 {
+            color:blueviolet;
+            font: bold;
+        }
+
+        .user2 {
+            color:darkcyan;
+            font: bold;
+        }
+    </style>
+</head>
+<body>
+    <section id="assignment">
+        <h1>{{title}}</h1>
+        <!-- 1) Fetch the user input and use it as a CSS class -->
+        <!-- The entered class should be added to the below paragraph -->
+        <input type="text" v-model="classname"/>
+        <!-- (available classes: "user1", "user2") -->
+        <p v-if="visible" :class="classname">
+         Style me!
+        </p>
+        <button v-on:click="visible = !visible">Toggle Paragraph</button>
+        <!-- 2) Use the "visible" and "hidden" classes to show/ hide the above paragraph -->
+        <!-- Clicking the button should toggle between the two options -->
+        <!-- 3) Add dynamic inline styling to the below paragraph and let the user enter a background-color -->
+        <input type="text" v-model="bgColour"/>
+        <p v-bind:style="{ 'background-color': bgColour }">Style me inline!</p>
+      </section>
+
+      <script src="https://unpkg.com/vue"></script>
+
+      <script>
+          let myVue = new Vue ({
+              el : '#assignment',
+              data : {
+              title : "Vue classes",    
+              classname : "user1",
+              visible : true,
+              bgColour : "red"
+            }
+          })
+      </script>
+
+      
+</body>
+</html>
+
